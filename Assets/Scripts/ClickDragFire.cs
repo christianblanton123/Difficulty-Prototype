@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClickDragFire : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ClickDragFire : MonoBehaviour
     LineRenderer arrow;
     Vector3 zOffset;
     TrailRenderer tr;
+    public CinemachineImpulseSource impulseSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,17 +36,17 @@ public class ClickDragFire : MonoBehaviour
             finalMousePos = Input.mousePosition;
             //shoot
             tr.Clear();
-            rb.AddForce((new Vector2(InitmousePos.x, InitmousePos.y) - new Vector2(finalMousePos.x, finalMousePos.y))*4);
+            rb.AddForce((new Vector2(InitmousePos.x, InitmousePos.y) - new Vector2(finalMousePos.x, finalMousePos.y)) * 4);
         }
         else if (Input.GetButton("Fire1"))
         {
             arrow.SetPosition(0, rb.transform.position);
-            arrow.SetPosition(1, rb.transform.position+Camera.main.ScreenToWorldPoint(InitmousePos)-(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+            arrow.SetPosition(1, rb.transform.position + Camera.main.ScreenToWorldPoint(InitmousePos) - (Camera.main.ScreenToWorldPoint(Input.mousePosition)));
 
             // A simple 2 color gradient with a fixed alpha of 1.0f.
             float alpha = 1.0f;
             float dist = Vector2.Distance(new Vector2(arrow.GetPosition(0).x, arrow.GetPosition(0).y), new Vector2(arrow.GetPosition(1).x, arrow.GetPosition(1).y));
-            float lerpFactor = Mathf.Clamp(dist/6, 0, 1);
+            float lerpFactor = Mathf.Clamp(dist / 6, 0, 1);
             Debug.Log("Lerp" + lerpFactor);
             Gradient gradient = new Gradient();
             Color lerpedColor = Color.Lerp(Color.green, Color.red, lerpFactor);
@@ -52,7 +56,17 @@ public class ClickDragFire : MonoBehaviour
             );
             arrow.colorGradient = gradient;
 
-            
+
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //can only make on falling shots
+        if (collision.gameObject.CompareTag("net")&&rb.velocity.y<=0)
+        {
+            impulseSource.GenerateImpulseWithVelocity(rb.velocity);
+            Debug.Log("made");
+        }
+    }
+
 }
