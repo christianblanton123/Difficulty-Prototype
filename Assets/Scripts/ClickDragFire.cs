@@ -16,6 +16,8 @@ public class ClickDragFire : MonoBehaviour
     public CinemachineImpulseSource impulseSource;
     [SerializeField] Buttons buttons;
 
+    [SerializeField] ParticleSystem basketParticles;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,6 +69,10 @@ public class ClickDragFire : MonoBehaviour
         {
             if (buttons.getHasScreenShake()) {
                 impulseSource.GenerateImpulseWithVelocity(rb.velocity);
+            }
+
+            if (buttons.getHasParticles()) {
+                basketParticles.Play();
             }
             
             Debug.Log("made");

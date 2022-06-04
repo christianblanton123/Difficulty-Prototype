@@ -36,11 +36,23 @@ public class Buttons : MonoBehaviour
         return hasScreenShake;
     }
 
+    public bool getHasParticles() {
+        return hasParticles;
+    }
+
     public void changeHasScreenShakeState() {
         if (!getHasScreenShake()) {
             hasScreenShake = true;
         } else {
             hasScreenShake = false;
+        }
+    }
+
+    public void changeHasParticles() {
+        if (!getHasScreenShake()) {
+            hasParticles = true;
+        } else {
+            hasParticles = false;
         }
     }
 
