@@ -14,6 +14,7 @@ public class ClickDragFire : MonoBehaviour
     Vector3 zOffset;
     TrailRenderer tr;
     public CinemachineImpulseSource impulseSource;
+    [SerializeField] Buttons buttons;
 
     void Start()
     {
@@ -64,7 +65,10 @@ public class ClickDragFire : MonoBehaviour
         //can only make on falling shots
         if (collision.gameObject.CompareTag("net")&&rb.velocity.y<=0)
         {
-            impulseSource.GenerateImpulseWithVelocity(rb.velocity);
+            if (buttons.getHasScreenShake()) {
+                impulseSource.GenerateImpulseWithVelocity(rb.velocity);
+            }
+            
             Debug.Log("made");
         }
     }
