@@ -14,6 +14,8 @@ public class ClickDragFire : MonoBehaviour
     Vector3 zOffset;
     TrailRenderer tr;
     public CinemachineImpulseSource impulseSource;
+
+    [SerializeField] SpriteArray spriteArray;
     [SerializeField] Buttons buttons;
 
     [SerializeField] ParticleSystem basketParticles;
@@ -74,6 +76,10 @@ public class ClickDragFire : MonoBehaviour
             if (buttons.getHasParticles()) {
                 basketParticles.Play();
             }
+
+            // if (buttons.getHasColor()) {
+            //     spriteArray.ChangeSprite();
+            // }
             
             Debug.Log("made");
         }

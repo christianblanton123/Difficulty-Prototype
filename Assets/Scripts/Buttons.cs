@@ -40,6 +40,10 @@ public class Buttons : MonoBehaviour
         return hasParticles;
     }
 
+    public bool getHasColor() {
+        return hasColor;
+    }
+
     public void changeHasScreenShakeState() {
         if (!getHasScreenShake()) {
             hasScreenShake = true;
@@ -49,13 +53,20 @@ public class Buttons : MonoBehaviour
     }
 
     public void changeHasParticles() {
-        if (!getHasScreenShake()) {
+        if (!getHasParticles()) {
             hasParticles = true;
         } else {
             hasParticles = false;
         }
     }
 
+    public void changeHasColor() {
+        if (!getHasColor()) {
+            hasColor = true;
+        } else {
+            hasColor = false;
+        }
+    }
 
 
 }
