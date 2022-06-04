@@ -8,6 +8,7 @@ public class SpriteArray : MonoBehaviour
 
     [SerializeField] private SpriteSwap[] spriteArray;
     public SpriteRenderer[] spriteRenderers;
+    [SerializeField] private GameObject[] spritesToAppear;
     
     
 
@@ -27,10 +28,17 @@ public class SpriteArray : MonoBehaviour
     
     public void ChangeSprite()
     {
+        for (int i = 0; i < spritesToAppear.Length; i++) {
+            if (spritesToAppear[i].activeInHierarchy == false) {
+                spritesToAppear[i].SetActive(true);
+                Debug.Log("set active is true");
+            } else {
+                spritesToAppear[i].SetActive(false);
+            }
+        }
+
         for (int i = 0; i < spriteArray.Length; i++) {
-            // if (spriteArray.Length == 0) {
-            //     break;
-            // }
+           
             if (spriteArray[i].currentSprite == spriteArray[i].newSprite) {
                 spriteArray[i].currentSprite = spriteArray[i].oldSprite; 
                 spriteRenderers[i].sprite = spriteArray[i].currentSprite;
@@ -38,7 +46,11 @@ public class SpriteArray : MonoBehaviour
                 spriteArray[i].currentSprite = spriteArray[i].newSprite; 
                 spriteRenderers[i].sprite = spriteArray[i].currentSprite;
             }
+
+            
         }
+
+        
         
     }
 }

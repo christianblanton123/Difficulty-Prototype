@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpriteSwap : MonoBehaviour
 {
 
-    //public SpriteArray spriteArray;
     
     public Sprite currentSprite;
     public Sprite oldSprite;
