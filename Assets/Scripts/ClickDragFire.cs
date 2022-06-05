@@ -26,6 +26,7 @@ public class ClickDragFire : MonoBehaviour
         arrow = GetComponentInChildren<LineRenderer>();
         zOffset = new Vector3(0, 0, 10);
         tr = GetComponent<TrailRenderer>();
+        FindObjectOfType<AudioManager>().Play("Music");
     }
 
     // Update is called once per frame
@@ -77,9 +78,9 @@ public class ClickDragFire : MonoBehaviour
                 basketParticles.Play();
             }
 
-            // if (buttons.getHasColor()) {
-            //     spriteArray.ChangeSprite();
-            // }
+            if (buttons.getHasAudio()) {
+                FindObjectOfType<AudioManager>().Play("Made");
+            }
             
             Debug.Log("made");
         }

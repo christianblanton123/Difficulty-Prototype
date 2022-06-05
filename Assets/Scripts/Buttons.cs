@@ -44,6 +44,10 @@ public class Buttons : MonoBehaviour
         return hasColor;
     }
 
+    public bool getHasAudio() {
+        return hasAudio;
+    }
+
     public void changeHasScreenShakeState() {
         if (!getHasScreenShake()) {
             hasScreenShake = true;
@@ -68,5 +72,14 @@ public class Buttons : MonoBehaviour
         }
     }
 
+    public void changeHasAudio() {
+        if (!getHasAudio()) {
+            hasAudio = true;
+            FindObjectOfType<AudioManager>().ReturnVolume("Music");
+        } else {
+            hasAudio = false;
+            FindObjectOfType<AudioManager>().NoVolume("Music");
+        }
+    }
 
 }
