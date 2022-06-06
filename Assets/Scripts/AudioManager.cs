@@ -99,6 +99,10 @@ public class AudioManager : MonoBehaviour
         s.source.volume = volumeControl.value;
     }
 
+    public void swishNoise() {
+        sounds[0].source.volume = 1f;
+    }
+
     public void StopPrevious (int index)
     {
         if (sounds[index].source.isPlaying)
