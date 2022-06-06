@@ -19,6 +19,7 @@ public class ClickDragFire : MonoBehaviour
     [SerializeField] Buttons buttons;
 
     [SerializeField] ParticleSystem basketParticles;
+   
 
     void Start()
     {
@@ -29,10 +30,15 @@ public class ClickDragFire : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Music");
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //bad
+        GetComponentInChildren<SquashStretch>().PlayImpactFX();
+    }
+
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             InitmousePos = Input.mousePosition;
@@ -65,25 +71,30 @@ public class ClickDragFire : MonoBehaviour
 
         }
     }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //can only make on falling shots
         if (collision.gameObject.CompareTag("net")&&rb.velocity.y<=0)
-        {
-            if (buttons.getHasScreenShake()) {
+        { 
+            if (buttons.getHasScreenShake())
+            {
                 impulseSource.GenerateImpulseWithVelocity(rb.velocity);
             }
 
-            if (buttons.getHasParticles()) {
+            if (buttons.getHasParticles())
+            {
                 basketParticles.Play();
             }
 
-            if (buttons.getHasAudio()) {
+            if (buttons.getHasAudio())
+            {
                 FindObjectOfType<AudioManager>().Play("Made");
             }
-            
             Debug.Log("made");
         }
+        
     }
 
 }
