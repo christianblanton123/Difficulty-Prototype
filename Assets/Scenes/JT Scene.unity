@@ -7281,6 +7281,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ff0a0275d1cfb4482099a38e59d3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 106753001}
+  audio: {fileID: 1104865595}
+  animation: {fileID: 1844873446}
+  screenShake: {fileID: 1587962937}
+  colorButton: {fileID: 1845870639}
 --- !u!4 &982508483
 Transform:
   m_ObjectHideFlags: 0
@@ -8205,7 +8210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357979830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.032047, y: 2.4046135, z: -66.564896}
+  m_LocalPosition: {x: -3.55, y: -4.19, z: -66.564896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9101,6 +9106,18 @@ MonoBehaviour:
       - m_Target: {fileID: 30468106}
         m_TargetAssemblyTypeName: SpriteArray, Assembly-CSharp
         m_MethodName: ChangeSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 982508482}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: changeHasColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
