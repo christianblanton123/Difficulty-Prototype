@@ -27,6 +27,7 @@ public class ClickDragFire : MonoBehaviour
         zOffset = new Vector3(0, 0, 10);
         tr = GetComponent<TrailRenderer>();
         FindObjectOfType<AudioManager>().Play("Music");
+        Debug.Log(buttons.getHasScreenShake());
     }
 
     // Update is called once per frame
@@ -64,6 +65,8 @@ public class ClickDragFire : MonoBehaviour
 
 
         }
+
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

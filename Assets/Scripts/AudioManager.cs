@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Diagnostics;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    [SerializeField] private Slider volumeControl;
     
     void Awake ()
     {
@@ -17,6 +19,22 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+        }
+    }
+
+    void Update () {
+        for (int s = 0; s < sounds.Length; s++)
+        {
+            if (FindObjectOfType<Buttons>().getHasAudio()) {
+                if (s == 0) {
+                    sounds[s].source.volume = 5f * (volumeControl.value);
+                } else {
+                    sounds[s].source.volume = volumeControl.value / 2;
+                }
+                
+            } else {
+                sounds[s].source.volume = 0;
+            }
         }
     }
 
@@ -74,7 +92,7 @@ public class AudioManager : MonoBehaviour
         {
             return;
         }
-        s.source.volume = 0.2f;
+        s.source.volume = volumeControl.value;
     }
 
     public void StopPrevious (int index)
