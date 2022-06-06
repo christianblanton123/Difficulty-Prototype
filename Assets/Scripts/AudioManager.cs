@@ -23,6 +23,10 @@ public class AudioManager : MonoBehaviour
     }
 
     void Update () {
+        
+    }
+
+    public void SlideChanged() {
         for (int s = 0; s < sounds.Length; s++)
         {
             if (FindObjectOfType<Buttons>().getHasAudio()) {
