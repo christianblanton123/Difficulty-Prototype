@@ -35,6 +35,10 @@ public class Buttons : MonoBehaviour
     public bool getHasScreenShake() {
         return hasScreenShake;
     }
+    public bool getHasAnimation()
+    {
+        return hasAnimation;
+    }
 
     public bool getHasParticles() {
         return hasParticles;
@@ -47,7 +51,10 @@ public class Buttons : MonoBehaviour
     public bool getHasAudio() {
         return hasAudio;
     }
-
+    public void changeHasAnimation()
+    {
+        hasAnimation = !hasAnimation;
+    }
     public void changeHasScreenShakeState() {
         if (!getHasScreenShake()) {
             hasScreenShake = true;
