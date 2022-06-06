@@ -76,6 +76,7 @@ public class Buttons : MonoBehaviour
         if (!getHasAudio()) {
             hasAudio = true;
             FindObjectOfType<AudioManager>().ReturnVolume("Music");
+            FindObjectOfType<AudioManager>().swishNoise();
         } else {
             hasAudio = false;
             FindObjectOfType<AudioManager>().NoVolume("Music");

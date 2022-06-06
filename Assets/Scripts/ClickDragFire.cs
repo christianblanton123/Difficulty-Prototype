@@ -28,6 +28,7 @@ public class ClickDragFire : MonoBehaviour
         zOffset = new Vector3(0, 0, 10);
         tr = GetComponent<TrailRenderer>();
         FindObjectOfType<AudioManager>().Play("Music");
+        Debug.Log(buttons.getHasScreenShake());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,6 +71,8 @@ public class ClickDragFire : MonoBehaviour
 
 
         }
+
+        
     }
 
 
