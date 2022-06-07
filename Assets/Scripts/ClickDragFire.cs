@@ -54,7 +54,7 @@ public class ClickDragFire : MonoBehaviour
             float alpha = 1.0f;
             float dist = Vector2.Distance(new Vector2(arrow.GetPosition(0).x, arrow.GetPosition(0).y), new Vector2(arrow.GetPosition(1).x, arrow.GetPosition(1).y));
             float lerpFactor = Mathf.Clamp(dist / 6, 0, 1);
-            Debug.Log("Lerp" + lerpFactor);
+           // Debug.Log("Lerp" + lerpFactor);
             Gradient gradient = new Gradient();
             Color lerpedColor = Color.Lerp(Color.green, Color.red, lerpFactor);
             gradient.SetKeys(
