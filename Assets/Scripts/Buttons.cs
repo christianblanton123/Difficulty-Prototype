@@ -16,9 +16,10 @@ public class Buttons : MonoBehaviour
     [SerializeField] private Button animation;
     [SerializeField] private Button screenShake;
     [SerializeField] private Button colorButton;
-    
 
-    public Buttons() {
+
+    public Buttons()
+    {
 
     }
 
@@ -26,20 +27,21 @@ public class Buttons : MonoBehaviour
     void Start()
     {
         hasParticles = false;
-        hasAudio = false; 
+        hasAudio = false;
         hasAnimation = false;
         hasScreenShake = false;
         hasColor = false;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public bool getHasScreenShake() {
+    public bool getHasScreenShake()
+    {
         return hasScreenShake;
     }
     public bool getHasAnimation()
@@ -47,15 +49,18 @@ public class Buttons : MonoBehaviour
         return hasAnimation;
     }
 
-    public bool getHasParticles() {
+    public bool getHasParticles()
+    {
         return hasParticles;
     }
 
-    public bool getHasColor() {
+    public bool getHasColor()
+    {
         return hasColor;
     }
 
-    public bool getHasAudio() {
+    public bool getHasAudio()
+    {
         return hasAudio;
     }
     public void changeHasAnimation()
@@ -69,43 +74,59 @@ public class Buttons : MonoBehaviour
             animation.GetComponent<Image>().color = Color.white;
 
     }
-    public void changeHasScreenShakeState() {
-        if (!getHasScreenShake()) {
+    public void changeHasScreenShakeState()
+    {
+        if (!getHasScreenShake())
+        {
             hasScreenShake = true;
             screenShake.GetComponent<Image>().color = Color.green;
-        } else {
+        }
+        else
+        {
             hasScreenShake = false;
             screenShake.GetComponent<Image>().color = Color.white;
         }
     }
 
-    public void changeHasParticles() {
-        if (!getHasParticles()) {
+    public void changeHasParticles()
+    {
+        if (!getHasParticles())
+        {
             hasParticles = true;
             particles.GetComponent<Image>().color = Color.green;
-        } else {
+        }
+        else
+        {
             hasParticles = false;
             particles.GetComponent<Image>().color = Color.white;
         }
     }
 
-    public void changeHasColor() {
-        if (!getHasColor()) {
+    public void changeHasColor()
+    {
+        if (!getHasColor())
+        {
             hasColor = true;
             colorButton.GetComponent<Image>().color = Color.green;
-        } else {
+        }
+        else
+        {
             hasColor = false;
             colorButton.GetComponent<Image>().color = Color.white;
         }
     }
 
-    public void changeHasAudio() {
-        if (!getHasAudio()) {
+    public void changeHasAudio()
+    {
+        if (!getHasAudio())
+        {
             hasAudio = true;
             FindObjectOfType<AudioManager>().ReturnVolume("Music");
             FindObjectOfType<AudioManager>().swishNoise();
             audio.GetComponent<Image>().color = Color.green;
-        } else {
+        }
+        else
+        {
             hasAudio = false;
             FindObjectOfType<AudioManager>().NoVolume("Music");
             audio.GetComponent<Image>().color = Color.white;

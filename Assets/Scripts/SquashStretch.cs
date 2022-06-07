@@ -11,7 +11,7 @@ public class SquashStretch : MonoBehaviour
     Rigidbody2D rb;
     void Start()
     {
-        rb=GetComponentInParent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class SquashStretch : MonoBehaviour
     //this should probably be in another script but whatever
     void UpdateScale()
     {
-        float rotAngle = Mathf.Atan2(rb.transform.forward.y, rb.transform.forward.x)*180/Mathf.PI;
+        float rotAngle = Mathf.Atan2(rb.transform.forward.y, rb.transform.forward.x) * 180 / Mathf.PI;
         Quaternion rot = Quaternion.Euler(rotAngle, 0, 0);
         Matrix4x4 m = Matrix4x4.TRS(Vector3.zero, rot, Vector3.one);
 
@@ -32,12 +32,12 @@ public class SquashStretch : MonoBehaviour
         if (mSquashStretchFactor < 1.0f)
         {
             float t = mSquashStretchFactor;
-           
+
             Vector3 scale = new Vector3(1.2f, 0.7f, 1.0f);
-                var pt = m.MultiplyPoint3x4(scale);
-                transform.localScale = Vector3.Lerp(
-                Vector3.one, pt,
-                t);
+            var pt = m.MultiplyPoint3x4(scale);
+            transform.localScale = Vector3.Lerp(
+            Vector3.one, pt,
+            t);
         }
         else if (mSquashStretchFactor > 1.0f)
         {
@@ -78,5 +78,5 @@ public class SquashStretch : MonoBehaviour
         mSquashStretchFactor = 1.0f;
     }
 
-    
+
 }

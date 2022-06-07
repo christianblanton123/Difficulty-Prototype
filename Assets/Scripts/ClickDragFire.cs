@@ -19,7 +19,7 @@ public class ClickDragFire : MonoBehaviour
     [SerializeField] Buttons buttons;
 
     [SerializeField] ParticleSystem basketParticles;
-   
+
 
     void Start()
     {
@@ -34,8 +34,8 @@ public class ClickDragFire : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //bad
-        if(buttons.getHasAnimation())
-        GetComponentInChildren<SquashStretch>().PlayImpactFX();
+        if (buttons.getHasAnimation())
+            GetComponentInChildren<SquashStretch>().PlayImpactFX();
     }
 
     // Update is called once per frame
@@ -73,15 +73,15 @@ public class ClickDragFire : MonoBehaviour
 
         }
 
-        
+
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //can only make on falling shots
-        if (collision.gameObject.CompareTag("net")&&rb.velocity.y<=0)
-        { 
+        if (collision.gameObject.CompareTag("net") && rb.velocity.y <= 0)
+        {
             if (buttons.getHasScreenShake())
             {
                 impulseSource.GenerateImpulseWithVelocity(rb.velocity);
@@ -98,7 +98,7 @@ public class ClickDragFire : MonoBehaviour
             }
             Debug.Log("made");
         }
-        
+
     }
 
 }
