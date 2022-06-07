@@ -20,6 +20,7 @@ public class ClickDragFire : MonoBehaviour
 
     [SerializeField] ParticleSystem basketParticles;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,13 +28,19 @@ public class ClickDragFire : MonoBehaviour
         zOffset = new Vector3(0, 0, 10);
         tr = GetComponent<TrailRenderer>();
         FindObjectOfType<AudioManager>().Play("Music");
-        Debug.Log(buttons.getHasScreenShake());
+        //Debug.Log(buttons.getHasScreenShake());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //bad
+        if (buttons.getHasAnimation())
+            GetComponentInChildren<SquashStretch>().PlayImpactFX();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             InitmousePos = Input.mousePosition;
@@ -54,7 +61,7 @@ public class ClickDragFire : MonoBehaviour
             float alpha = 1.0f;
             float dist = Vector2.Distance(new Vector2(arrow.GetPosition(0).x, arrow.GetPosition(0).y), new Vector2(arrow.GetPosition(1).x, arrow.GetPosition(1).y));
             float lerpFactor = Mathf.Clamp(dist / 6, 0, 1);
-           // Debug.Log("Lerp" + lerpFactor);
+            Debug.Log("Lerp" + lerpFactor);
             Gradient gradient = new Gradient();
             Color lerpedColor = Color.Lerp(Color.green, Color.red, lerpFactor);
             gradient.SetKeys(
@@ -66,27 +73,32 @@ public class ClickDragFire : MonoBehaviour
 
         }
 
-        
+
     }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //can only make on falling shots
-        if (collision.gameObject.CompareTag("net")&&rb.velocity.y<=0)
+        if (collision.gameObject.CompareTag("net") && rb.velocity.y <= 0)
         {
-            if (buttons.getHasScreenShake()) {
+            if (buttons.getHasScreenShake())
+            {
                 impulseSource.GenerateImpulseWithVelocity(rb.velocity);
             }
 
-            if (buttons.getHasParticles()) {
+            if (buttons.getHasParticles())
+            {
                 basketParticles.Play();
             }
 
-            if (buttons.getHasAudio()) {
+            if (buttons.getHasAudio())
+            {
                 FindObjectOfType<AudioManager>().Play("Made");
             }
-            
             Debug.Log("made");
         }
+
     }
 
 }
