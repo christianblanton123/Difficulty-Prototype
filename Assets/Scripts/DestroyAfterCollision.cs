@@ -64,7 +64,7 @@ public class DestroyAfterCollision : MonoBehaviour
         {
            gameObject.SetActive(false);
            //pm.occupiedMap[this.transform] = false;
-           pm.SpawnNewPlatform(this.gameObject.transform.parent.gameObject);
+           pm.SpawnNewPlatform(this.gameObject);
            startTimer = false;
         }
     }

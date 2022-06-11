@@ -17,11 +17,12 @@ public class PlatformManager : MonoBehaviour
 
     public void SpawnNewPlatform(GameObject t)
     {
-        GameObject set= platformSet.Find(obj=>t);
-        GameObject platform = set.transform.GetChild(Random.Range(0, set.transform.childCount)).gameObject;
+        //GameObject set= platformSet.Find(obj=>t);
+        GameObject parentSet = t.transform.parent.gameObject;
+        GameObject platform = parentSet.transform.GetChild(Random.Range(0, parentSet.transform.childCount)).gameObject;
         while (platform.GetComponent<DestroyAfterCollision>().startTimer && platform.activeSelf)
         {
-            platform = set.transform.GetChild(Random.Range(0, set.transform.childCount)).gameObject;
+            platform = parentSet.transform.GetChild(Random.Range(0, parentSet.transform.childCount)).gameObject;
         }
         platform.GetComponent<DestroyAfterCollision>().Spawn(platform.transform);
     }
