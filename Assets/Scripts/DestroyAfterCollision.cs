@@ -9,6 +9,9 @@ public class DestroyAfterCollision : MonoBehaviour
     Color originalColor;
     SpriteRenderer[] rend;
     public PlatformManager pm;
+    public float MinLifeTime = 1.0f;
+    public float LifeTimeStep = 0.5f;
+    float LifeTime;
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,6 +19,7 @@ public class DestroyAfterCollision : MonoBehaviour
         rend = gameObject.GetComponentsInChildren<SpriteRenderer>();
         originalColor = rend[0].color;
         pm = GameObject.FindObjectOfType<PlatformManager>();
+        LifeTime=MaxLifeTime;
     }
 
     IEnumerator mDestroyRoutine;
@@ -48,24 +52,26 @@ public class DestroyAfterCollision : MonoBehaviour
     {
         
         float t = 0.0f;
-        while (t < MaxLifeTime)
+        while (t < LifeTime)
         {
             t += Time.deltaTime;
             Color color = rend[0].color;
             Debug.Log(t);
-            color.a = Mathf.Lerp(originalColor.a, 0, t / MaxLifeTime);
+            color.a = Mathf.Lerp(originalColor.a, 0, t / LifeTime);
             foreach (SpriteRenderer r in rend)
             {
                 r.color = color;
             }
             yield return null;
         }
-        if (t > MaxLifeTime)
+        if (t > LifeTime)
         {
            gameObject.SetActive(false);
            //pm.occupiedMap[this.transform] = false;
            pm.SpawnNewPlatform(this.gameObject);
            startTimer = false;
+            if(LifeTime>MinLifeTime)
+            LifeTime -= LifeTimeStep;
         }
     }
     
