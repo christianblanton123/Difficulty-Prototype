@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour
         hasDoubleJumped = false;
         originalText = jumpsLeft.text;
         jumpsLeft.text = jumpsLeft.text + " " + MaxAerialJumps;
+        CollisionSFX = GameObject.FindGameObjectWithTag("CollisionSFX").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

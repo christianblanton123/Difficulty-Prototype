@@ -20,6 +20,7 @@ public class DestroyAfterCollision : MonoBehaviour
         originalColor = rend[0].color;
         pm = GameObject.FindObjectOfType<PlatformManager>();
         LifeTime=MaxLifeTime;
+        
     }
 
     IEnumerator mDestroyRoutine;
