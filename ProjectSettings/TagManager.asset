@@ -6,6 +6,7 @@ TagManager:
   tags:
   - net
   - CollisionTag
+  - CollisionSFX
   layers:
   - Default
   - TransparentFX
