@@ -33,6 +33,9 @@ public class Movement : MonoBehaviour
     string originalText;
     public TextMeshProUGUI jumpsLeft;
 
+    //Collision Audio
+    public AudioSource CollisionSFX; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,5 +116,15 @@ public class Movement : MonoBehaviour
         hasDoubleJumped = true;
         jumpsLeft.text = originalText + " " + doubleJumpsLeft;
     }
+
+//Collision Event for Collision sound effect
+public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "CollisionTag")
+        {
+            CollisionSFX.Play();
+        }
+    }
+
 }
 
